@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detailed information about: {{ post.title }}</title>
+</head>
+<body>
+    <div>
+        <p>title: {{ post.title }}</p>
+        <p>image: {{ post.image }}</p>
+        <p>description: {{ post.description }}</p>
+        <p>like: {{ post.like }}</p>
+    </div>
+    <div>
+        <form action="/posts/{{ post.id }}/" method="POST">
+            {% csrf_token %}
+            <input type="text" name="text">
+            <input type="submit" value="Add comment">
+        </form>
+    </div>
+    <div>
+        <a href="/post-edit/{{ post.id }}/"><p>Edit post</p></a>
+    </div>
+    <div>
+        {% for comment in post.comments.all %}
+            <p>{{ comment.text }}</p>
+            <p>{{ comment.date }}</p>
+        {% endfor %}
+    </div>
+    <div>
+        <a href="/post-delete/{{ post.id }}/"><p>Delete</p></a>
+    </div>
+</body>
+</html>

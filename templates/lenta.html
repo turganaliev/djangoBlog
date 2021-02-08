@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lenta</title>
+</head>
+<body>
+<div>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="/posts/{{ post.id }}/"><p>title: {{ post.title }}</p></a>
+                <p>image: {{ post.image }}</p>
+                <p>description: {{ post.description }}</p>
+                <p>like: {{ post.like }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<div>
+    <a href="/post-add/"><p>Add post</p></a>
+</div>
+</body>
+</html>
